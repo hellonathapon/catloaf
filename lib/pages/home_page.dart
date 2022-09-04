@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:catloaf/pages/addTodo_page.dart';
 import 'package:catloaf/widgets/nav_box.dart';
 import 'package:flutter/material.dart';
 
@@ -12,14 +13,25 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      backgroundColor: Colors.white,
+      // backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: Icon(Icons.catching_pokemon, color: Colors.grey),
-        actions: const [
+        backgroundColor: Colors.grey.shade50,
+        leading: Container(
+          padding: const EdgeInsets.all(10),
+          width: 20,
+          height: 20,
+          child: Image(
+            image: AssetImage('images/cat.png'),
+          ),
+        ),
+        actions: [
           Padding(
             padding: EdgeInsets.only(right: 12),
-            child: Icon(Icons.notifications, color: Colors.grey),
+            child: Icon(Icons.search, color: Colors.grey),
+          ),
+          Padding(
+            padding: EdgeInsets.only(right: 12),
+            child: Icon(Icons.notifications_outlined, color: Colors.grey),
           ),
         ],
         elevation: 0,
@@ -39,13 +51,25 @@ class HomePage extends StatelessWidget {
                   height: 20,
                 ),
                 Container(
-                  child: Text('What is up, Nathapon',
-                      style: TextStyle(fontSize: 30)),
+                  child: Text(
+                    'What\'s up, Nathapon',
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black87,
+                    ),
+                  ),
                 ),
                 SizedBox(
                   height: 10,
                 ),
-                Text('Category'),
+                Text(
+                  'CATEGORY',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: Colors.grey,
+                  ),
+                ),
                 SizedBox(
                   height: 10,
                 ),
@@ -53,24 +77,30 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    NavBox(name: 'Active Todos', amount: 20, col: Colors.amber),
+                    NavBox(name: 'Active', amount: 10, col: Colors.blue),
                     SizedBox(
                       width: 10,
                     ),
-                    NavBox(name: 'Overdue Todos', amount: 20, col: Colors.teal),
+                    NavBox(name: 'Overdue', amount: 20, col: Colors.black54),
                   ],
                 ),
                 SizedBox(height: 10),
               ],
             ),
-            Text('Today\'s tasks'),
+            Text(
+              'Your active\'s tasks',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Colors.grey,
+              ),
+            ),
             Flexible(
               child: ListView.builder(
                 shrinkWrap: true,
                 physics: ScrollPhysics(),
-                itemCount: 25,
+                itemCount: 5,
                 itemBuilder: (BuildContext context, int index) {
-                  return Todo();
+                  return Todo(todoIndex: index.toString());
                 },
               ),
             ),
@@ -80,7 +110,10 @@ class HomePage extends StatelessWidget {
         //* list view
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => AddTodoPage()));
+        },
         child: const Icon(Icons.add),
       ),
     );

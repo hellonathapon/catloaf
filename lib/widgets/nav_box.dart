@@ -15,18 +15,27 @@ class NavBox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: Container(
+        padding: const EdgeInsets.only(left: 15.0),
         height: 80,
         width: double.infinity,
-        child: Row(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(name),
-            Text(amount.toString()),
+            Text('${amount.toString()} tasks'),
+            Text(
+              name,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: col,
+              ),
+            ),
           ],
         ),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(25.0),
-          color: col,
+          borderRadius: BorderRadius.circular(18.0),
+          color: Colors.white,
         ),
       ),
     );
