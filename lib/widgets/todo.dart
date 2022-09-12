@@ -29,18 +29,46 @@ class Todo extends StatelessWidget {
       child: Card(
         elevation: 0,
         child: ExpansionTile(
-          leading: Icon(Icons.check_circle_outline),
+          // leading: Icon(
+          //   Icons.check_circle_outline,
+          // ),
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
-          title: Text(
-            'Todo today something tomorrow',
-            style: TextStyle(
-              fontSize: 16,
-            ),
+          tilePadding: EdgeInsets.symmetric(
+              horizontal: 10), //* OVERRIDES DEFAULT PADDING
+          backgroundColor: Colors.grey.shade100,
+          title: Row(
+            children: [
+              Icon(
+                Icons.check_circle_outline,
+              ),
+              SizedBox(width: 10),
+              Flexible(
+                child: Text(
+                  'Todo today something tomo',
+                  style: TextStyle(
+                    color: Colors.black54,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+              ),
+            ],
           ),
           children: [
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Text("Created at 11/09/2022"),
+              child: Row(
+                children: [
+                  Icon(Icons.calendar_month_rounded, color: Colors.grey),
+                  SizedBox(width: 5),
+                  Text(
+                    "Created at 11/09/2022",
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ],
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
@@ -49,7 +77,16 @@ class Todo extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(10),
-              child: Text("Due Date 20/09/2022"),
+              child: Row(
+                children: [
+                  Icon(Icons.notifications_outlined, color: Colors.grey),
+                  SizedBox(width: 5),
+                  Text(
+                    "Due Date 20/09/2022",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                ],
+              ),
             ),
           ],
         ),

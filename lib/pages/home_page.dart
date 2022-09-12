@@ -29,19 +29,33 @@ class _HomePageState extends State<HomePage> {
       resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.grey.shade50,
-        leading: Container(
-          padding: const EdgeInsets.all(10),
-          width: 20,
-          height: 20,
-          child: Image(
-            image: AssetImage('images/cat.png'),
+        leadingWidth: 90,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: Center(
+            child: Text(
+              'CATLOAF',
+              style: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
+            ),
           ),
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 12),
-            child: Icon(Icons.notifications_outlined, color: Colors.grey),
-          ),
+              padding: EdgeInsets.all(10),
+              child: CircleAvatar(
+                radius: 30.0,
+                backgroundColor: Colors.grey,
+                child: Text(
+                  'N',
+                  style: TextStyle(
+                      color: Colors.black54, fontWeight: FontWeight.bold),
+                ),
+                // backgroundImage:
+                //     NetworkImage('https://via.placeholder.com/150'),
+              )),
         ],
         elevation: 0,
       ),
@@ -61,7 +75,7 @@ class _HomePageState extends State<HomePage> {
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
-                color: Colors.black87,
+                color: Colors.black54,
               ),
             ),
             SizedBox(
@@ -109,7 +123,9 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             Text(
-              'Your active\'s tasks',
+              cardSelect == 'Active'
+                  ? 'Your active\'s tasks'
+                  : 'Your overdued\'s tasks',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,

@@ -38,9 +38,18 @@ class _AddTodoPageState extends State<AddTodoPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               TextField(
-                style: TextStyle(fontSize: 25, height: 1.5),
+                style: TextStyle(fontSize: 25),
                 decoration: InputDecoration(
                   labelText: 'Enter new task',
+                  hintText: 'Keep it short \'n simple word',
+                  border: InputBorder.none,
+                ),
+              ),
+              TextField(
+                style: TextStyle(fontSize: 18, height: 0.5),
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  hintText: '(opt) You can make it long here',
                   border: InputBorder.none,
                 ),
               ),

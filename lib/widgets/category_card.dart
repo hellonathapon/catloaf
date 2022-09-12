@@ -30,15 +30,26 @@ class CategoryCard extends StatelessWidget {
               top: 0,
               right: 0,
               child: ClipRRect(
-                borderRadius: BorderRadius.only(topRight: Radius.circular(18)),
+                borderRadius:
+                    const BorderRadius.only(topRight: Radius.circular(18)),
                 child: Image.asset(
                   'images/abstract1.png',
                 ),
               ),
             ),
+            Positioned(
+              bottom: 0,
+              right: 0,
+              child: ClipRRect(
+                child: Image.asset(
+                  'images/active1.PNG',
+                  width: 100,
+                ),
+              ),
+            ),
             Container(
               padding: const EdgeInsets.only(left: 15.0),
-              height: 80,
+              // height: 80,
               width: 200,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
