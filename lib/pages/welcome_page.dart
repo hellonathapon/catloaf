@@ -1,48 +1,117 @@
-// ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, unnecessary_new, prefer_const_literals_to_create_immutables, avoid_unnecessary_containers
 
 import 'package:catloaf/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
-class WelcomePage extends StatelessWidget {
-  const WelcomePage({Key? key}) : super(key: key);
+class WelcomePage extends StatefulWidget {
+  WelcomePage({Key? key}) : super(key: key);
+
+  @override
+  State<WelcomePage> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<WelcomePage> {
+  TextEditingController controllerName = TextEditingController();
+  bool isChecked = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        width: double.maxFinite,
-        height: double.maxFinite,
-        decoration: new BoxDecoration(
-          image: new DecorationImage(
-            image: new AssetImage("images/welcome.png"),
-            fit: BoxFit.cover,
-          ),
-        ),
-        child: Container(
-          margin: const EdgeInsets.only(
-            top: 150,
-            left: 20,
-            right: 20,
-          ),
-          child: Column(
-            children: [
-              Text(
-                'Welcome to Catloaf',
-                style: TextStyle(
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: Stack(
+          children: [
+            Positioned(
+              width: MediaQuery.of(context).size.width,
+              top: 50,
+              child: Container(
+                child: Image.asset('images/welcome1.png', scale: 2.5),
+              ),
+            ),
+
+            //* Poaitioned Widget always needs width prop to function
+            Positioned(
+              top: 350,
+              width: MediaQuery.of(context).size.width,
+              child: Container(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Center(
+                      child: Text(
+                        "CATLOAF TODO",
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    SizedBox(height: 25),
+                    // TextField(
+                    //     decoration: InputDecoration(
+                    //         labelText: "What should i call you")),
+                    Text("What should i call you"),
+                    SizedBox(height: 10),
+                    Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.white,
+                      ),
+                      child: TextField(
+                        controller: controllerName,
+                        style: TextStyle(
+                          fontSize: 16,
+                        ),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          hintText: "Your name",
+                          contentPadding: EdgeInsets.only(
+                              left: 18.0, right: 18, top: 10, bottom: 10),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 18),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: isChecked,
+                          onChanged: (bool? val) {
+                            setState(() {
+                              isChecked = val!;
+                            });
+                          },
+                        ),
+                        Flexible(
+                          child: Text(
+                              "Catloaf still in the stage of Beta. if you enjoy using it consider support this project buy me a Coffee"),
+                        ),
+                      ],
+                    ),
+
+                    SizedBox(height: 10),
+
+                    ElevatedButton(
+                      onPressed: () {
+                        print("DEBUGGGGGGGGGGGG : controller");
+                        print(controllerName.value.text);
+                        if (controllerName.value.text.length == 0) {
+                          return;
+                        } else {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => HomePage()));
+                        }
+                      },
+                      child: Text('REGISTER'),
+                      style: ElevatedButton.styleFrom(
+                          minimumSize: const Size.fromHeight(
+                              50), // height 50 and width infinite
+                          shape: StadiumBorder()),
+                    )
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => HomePage()));
-        },
-        child: Icon(Icons.arrow_forward_ios),
       ),
     );
   }

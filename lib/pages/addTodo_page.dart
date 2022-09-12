@@ -2,8 +2,15 @@
 
 import 'package:flutter/material.dart';
 
-class AddTodoPage extends StatelessWidget {
+class AddTodoPage extends StatefulWidget {
   const AddTodoPage({Key? key}) : super(key: key);
+
+  @override
+  State<AddTodoPage> createState() => _AddTodoPageState();
+}
+
+class _AddTodoPageState extends State<AddTodoPage> {
+  DateTime? _dateTime;
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +55,20 @@ class AddTodoPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   child: FloatingActionButton.extended(
-                    onPressed: () {},
+                    onPressed: () {
+                      //* Date picker
+
+                      showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2021),
+                        lastDate: DateTime(2023),
+                      ).then((pickedDate) {
+                        setState(() {
+                          _dateTime = pickedDate;
+                        });
+                      });
+                    },
                     backgroundColor: Colors.grey.shade50,
                     icon: Icon(
                       Icons.calendar_month_rounded,
@@ -56,7 +76,9 @@ class AddTodoPage extends StatelessWidget {
                       color: Colors.grey,
                     ),
                     label: Text(
-                      'Today',
+                      _dateTime == null
+                          ? 'Tomorrow'
+                          : "${_dateTime?.day}/${_dateTime?.month}/${_dateTime?.year}",
                       style: TextStyle(
                         color: Colors.grey,
                       ),

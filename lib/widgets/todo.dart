@@ -14,25 +14,6 @@ class Todo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       key: UniqueKey(),
-      // startActionPane: ActionPane(
-      //   // A motion is a widget used to control how the pane animates.
-      //   motion: const ScrollMotion(),
-      //   extentRatio: 0.2,
-
-      //   // A pane can dismiss the Slidable.
-      //   dismissible: DismissiblePane(onDismissed: () {}),
-
-      //   // All actions are defined in the children parameter.
-      //   children: [
-      //     // A SlidableAction can have an icon and/or a label.
-      //     SlidableAction(
-      //       onPressed: doNothing,
-      //       backgroundColor: Color(0xFFFE4A49),
-      //       foregroundColor: Colors.white,
-      //       icon: Icons.delete,
-      //     ),
-      //   ],
-      // ),
       endActionPane: ActionPane(
         motion: ScrollMotion(),
         extentRatio: 0.2,
@@ -47,21 +28,30 @@ class Todo extends StatelessWidget {
       ),
       child: Card(
         elevation: 0,
-        child: Padding(
-          padding:
-              const EdgeInsets.only(top: 20, bottom: 20, left: 8, right: 8),
-          child: Row(
-            children: [
-              Icon(Icons.check_circle_outline_rounded, color: Colors.blue),
-              SizedBox(width: 7),
-              Text(
-                'Todo today something tomorrow',
-                style: TextStyle(
-                  fontSize: 16,
-                ),
-              ),
-            ],
+        child: ExpansionTile(
+          leading: Icon(Icons.check_circle_outline),
+          expandedCrossAxisAlignment: CrossAxisAlignment.start,
+          title: Text(
+            'Todo today something tomorrow',
+            style: TextStyle(
+              fontSize: 16,
+            ),
           ),
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text("Created at 11/09/2022"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text(
+                  "try to add an ExpansionTile inside a Card, this will expand the Card when you expand the ExpansionTile"),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10),
+              child: Text("Due Date 20/09/2022"),
+            ),
+          ],
         ),
       ),
     );
