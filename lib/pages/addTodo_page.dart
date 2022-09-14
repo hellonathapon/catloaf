@@ -116,6 +116,7 @@ class _AddTodoPageState extends State<AddTodoPage> {
           color: Colors.white,
         ),
         elevation: 0,
+        backgroundColor: Color(0XFFFB7D81),
       ),
     );
   }

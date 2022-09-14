@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:catloaf/palette.dart';
 
 class Todo extends StatelessWidget {
   const Todo({Key? key, required this.todoIndex}) : super(key: key);
@@ -28,6 +29,14 @@ class Todo extends StatelessWidget {
       ),
       child: Card(
         elevation: 0,
+        color: Colors.grey.shade50,
+        shape: RoundedRectangleBorder(
+          // side: BorderSide(
+          //   color: Colors.grey,
+          //   width: 1,
+          // ),
+          borderRadius: BorderRadius.circular(10),
+        ),
         child: ExpansionTile(
           // leading: Icon(
           //   Icons.check_circle_outline,
@@ -35,7 +44,7 @@ class Todo extends StatelessWidget {
           expandedCrossAxisAlignment: CrossAxisAlignment.start,
           tilePadding: EdgeInsets.symmetric(
               horizontal: 10), //* OVERRIDES DEFAULT PADDING
-          backgroundColor: Colors.grey.shade100,
+          backgroundColor: Colors.grey.shade50,
           title: Row(
             children: [
               Icon(
@@ -59,7 +68,7 @@ class Todo extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.calendar_month_rounded, color: Colors.grey),
+                  Icon(Icons.calendar_month_rounded, color: Color(0xFFFB7D81)),
                   SizedBox(width: 5),
                   Text(
                     "Created at 11/09/2022",
@@ -79,7 +88,7 @@ class Todo extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               child: Row(
                 children: [
-                  Icon(Icons.notifications_outlined, color: Colors.grey),
+                  Icon(Icons.notifications_outlined, color: Color(0xFFFB7D81)),
                   SizedBox(width: 5),
                   Text(
                     "Due Date 20/09/2022",

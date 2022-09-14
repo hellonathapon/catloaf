@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
               padding: EdgeInsets.all(10),
               child: CircleAvatar(
                 radius: 30.0,
-                backgroundColor: Colors.grey,
+                backgroundColor: Colors.grey.shade200,
                 child: Text(
                   'N',
                   style: TextStyle(
@@ -106,6 +106,8 @@ class _HomePageState extends State<HomePage> {
                     amount: 10,
                     gradiant1: color.AppColor.gradTeal1,
                     gradiant2: color.AppColor.gradTeal2,
+                    bubbleImg: 'images/bubble2.png',
+                    figureImg: 'images/active.PNG',
                   ),
                   SizedBox(
                     width: 10,
@@ -116,16 +118,19 @@ class _HomePageState extends State<HomePage> {
                     },
                     gradiant1: color.AppColor.gradBlue1,
                     gradiant2: color.AppColor.gradBlue2,
-                    name: 'Overdue',
+                    name: 'Overdued',
+                    bubbleImg: 'images/bubble1.png',
+                    figureImg: 'images/overdue.PNG',
                     amount: 20,
                   ),
                 ],
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Text(
-              cardSelect == 'Active'
-                  ? 'Your active\'s tasks'
-                  : 'Your overdued\'s tasks',
+              cardSelect == 'Active' ? 'ACTIVE TASKS' : 'OVERDUED TASKS',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
@@ -154,6 +159,7 @@ class _HomePageState extends State<HomePage> {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => AddTodoPage()));
         },
+        backgroundColor: Color(0XFFFB7D81),
         child: const Icon(Icons.add),
       ),
     );

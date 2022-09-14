@@ -1,6 +1,7 @@
 import 'package:catloaf/pages/home_page.dart';
 import 'package:catloaf/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
+import './palette.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        // primaryColor: const Color(0XFFFB7D81),
+        primarySwatch: Palette.catloaf,
       ).copyWith(dividerColor: Colors.transparent),
       home: const HomePage(),
       debugShowCheckedModeBanner: false,
