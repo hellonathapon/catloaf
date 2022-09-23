@@ -13,6 +13,7 @@ class InitialTodos extends TodosState {
   List<Object> get props => [];
 }
 
+//* If user data doesn't exist, Welcome State is mandatory
 class Welcome extends TodosState {
   //* this state meant to be register new user specifically.
   //* this state is invoked when there is no such a user in Sharedpreference.

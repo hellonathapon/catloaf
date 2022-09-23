@@ -1,6 +1,10 @@
+import 'package:catloaf/cubit/todos_cubit_logics.dart';
+import 'package:catloaf/cubit/todos_cubits.dart';
 import 'package:catloaf/pages/home_page.dart';
 import 'package:catloaf/pages/welcome_page.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import './palette.dart';
 
 void main() {
@@ -19,7 +23,14 @@ class MyApp extends StatelessWidget {
         // primaryColor: const Color(0XFFFB7D81),
         primarySwatch: Palette.catloaf,
       ).copyWith(dividerColor: Colors.transparent),
-      home: const HomePage(),
+      home: BlocProvider<TodosCubit>(
+        
+        create: ((context) {
+          Future<SharedPreferences> pref = SharedPreferences.getInstance();
+          return TodosCubit(pref);
+        }),
+        child: const TodosCubitLogics(),
+      ),
       debugShowCheckedModeBanner: false,
     );
   }

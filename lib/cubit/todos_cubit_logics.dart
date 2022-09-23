@@ -23,7 +23,7 @@ class _TodosCubitLogicsState extends State<TodosCubitLogics> {
           return const HomePage();
         }
         if (state is LoadingTodos) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator(),);
         } else {
           return Container();
         }
